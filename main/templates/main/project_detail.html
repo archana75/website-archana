@@ -44,10 +44,46 @@
 
 
 <div class="container-fluid">
-    <div class="row">
+    <div class="row h-100 border border-primary" style="">
         <div class="col">
-            <img src="{{project_image.url}}" alt="">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center">{{ user_firstname }} {{ user_lastname }}</h1>
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{project_image.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{project_logo.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+
+                
+
+        </div>
+
+        <div class="col border border-danger">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center"> {{project_title}} </h1>
+                </div>
+            </div>
+
+            <div class="row ">
+                <div class="col ">
+                    <h2 class="text-center "> {{project_description}} </h2>
+                </div>
+            </div>
         </div>
     </div>
 </div>
