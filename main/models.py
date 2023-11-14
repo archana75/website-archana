@@ -53,6 +53,7 @@ class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='images')
+    logo = models.ImageField(upload_to='images', blank=True)
     video_link = models.URLField(blank=True)
     attachment_link = models.URLField(blank=True)
     is_published = models.BooleanField(default=True)

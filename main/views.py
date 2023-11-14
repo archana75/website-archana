@@ -40,10 +40,11 @@ def project_detail(request, id):
         project_title = current_project.title,
         project_description = current_project.description,
         project_image = current_project.image,
+        project_logo = current_project.logo,
         project_attacment_link = current_project.attachment_link,
         project_video_link = current_project.video_link,
-        # user_firstname = current_project.firstname,
-        # user_lastname = current_project.lastname,
+        user_firstname = current_project.created_by.firstname,
+        user_lastname = current_project.created_by.lastname,
     )
     return render(request, "main/project_detail.html", data)
     

@@ -48,6 +48,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'title',
         'description',
         image,
+        'logo',
         'video_link',
         'attachment_link',
         'is_published',
@@ -56,7 +57,7 @@ class ProjectAdmin(admin.ModelAdmin):
         'created_by'
     )
 
-    search_fields = ('title',)
+    search_fields = ('title', 'id', 'description')
  
 class GenerationAdmin(admin.ModelAdmin):
     list_display = (
