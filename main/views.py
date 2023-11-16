@@ -29,7 +29,7 @@ def index(request):
 
 
 def project_page(request):
-    all_projects = Project.objects.filter(school_project = 0)
+    all_projects = Project.objects.filter(school_product = 0)
     return render(request, "main/project.html",{
         'projects' : all_projects,
     })
@@ -49,6 +49,6 @@ def project_detail(request, id):
     return render(request, "main/project_detail.html", data)
     
 def products(request):
-    all_projects = Project.objects.filter(school_project = 1)
+    all_projects = Project.objects.filter(school_product = 1)
     data = dict(projects = all_projects)
     return render(request, "main/products.html", data)
