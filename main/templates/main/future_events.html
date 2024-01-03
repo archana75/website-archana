@@ -6,4 +6,49 @@
 
 {% load static %}
 
+<div class="container-fluid">
+    <div class="container-fluid">
+        <!--logo smx-->
+        <div class="row">
+          {% include "main/navbar.html" %}
+        </div>
+      
+      </div>
+      
+      <div class="container-fluid">
+          <div class="row"
+          style="background-image: url('https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fHww');
+                  background-repeat: no-repeat;
+                  background-position: center;
+                  background-size: cover;
+                  height: 15vh;">
+              <div class="col d-flex">
+                  <h1 class="text-center my-auto mx-auto">in coming events will be...</h1>
+              </div>
+          </div>
+      </div>
+      
+      <div class="container-fluid mt-5">
+          <div class="row">
+              {% for event in events %}
+              <div class="col-12 border border-danger p-3">
+                  <div class="col-8 mx-auto shadow rounded-3 p-2 mb-3">
+                      <div class="text-center">
+                          <img class="img-fluid" alt="" src="{{event.image.url}}">
+                          <h1>ini deskripsi</h1>
+                          <h2>ini penjelasan</h2>
+                      </div>
+                  </div>
+              </div>
+              {% endfor %}
+              
+          </div>
+      </div>
+</div>
+
+
+
+
+
+
 {% endblock content %}

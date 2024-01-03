@@ -52,3 +52,8 @@ def products(request):
     all_projects = Project.objects.filter(school_product = 1)
     data = dict(projects = all_projects)
     return render(request, "main/products.html", data)
+
+def future_events(request):
+    all_events = Event.objects.all()
+    data = dict(events = all_events)
+    return render(request, "main/future_events.html", data)
