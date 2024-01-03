@@ -7,5 +7,6 @@ urlpatterns = [
     path('project/<int:id>', views.project_detail, name="project_detail"),
     path('products/', views.products, name="products"),
     path('future_events/', views.future_events, name="future_events"),
+    path('achievement/', views.achievement, name="achievement"),
     
 ]
