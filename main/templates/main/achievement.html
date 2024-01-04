@@ -14,37 +14,36 @@
         </div>
       
       </div>
-      
       <div class="container-fluid">
-          <div class="row"
-          style="background-image: url('https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fHww');
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  background-size: cover;
-                  height: 15vh;">
-              <div class="col d-flex">
-                  <h1 class="text-center my-auto mx-auto">all achievement from student</h1>
-              </div>
-          </div>
-      </div>
-      
-      <div class="container-fluid mt-5">
-          <div class="row">
-              {% for event in events %}
-              <div class="col-12 border border-danger p-3">
-                  <div class="col-8 mx-auto shadow rounded-3 p-2 mb-3">
-                      <div class="text-center">
-                          <img class="img-fluid" alt="" src="{{event.image.url}}">
-                          <h1>ini deskripsi</h1>
-                          <h2>ini penjelasan</h2>
-                      </div>
-                  </div>
-              </div>
-              {% endfor %}
-              
-          </div>
-      </div>
+    <div class="row"
+    style="background-image: url('https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fHww');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 15vh;">
+        <div class="col d-flex">
+            <h1 class="text-center my-auto mx-auto">apa ja</h1>
+        </div>
+    </div>
 </div>
 
+<div class="container-fluid mt-5">
+    <div class="row">
+        {% for achievement in achievements %}
+        <div class="col-3 mb-2">
+            <div class="card">
+                <img src="{{project.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">{{achievement.title}}</h5>
+                  <div>{{ photos }}</div>
+                  <p class="card-text">{{achievement.description|truncatewords:"15"}}</p>
+                  <a href="" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
 
 {% endblock content %}

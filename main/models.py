@@ -63,6 +63,10 @@ class Project(models.Model):
                     Student,
                     on_delete=models.CASCADE,
                 )
+    
+    def __str__(self):
+        return f"{self.id} - {self.title}"
+    
 
 class Achievement(models.Model):
     event_name = models.CharField(max_length=100)
@@ -74,9 +78,7 @@ class Achievement(models.Model):
                     Student,
                     on_delete=models.CASCADE,
                 ) 
-    
-    def __str__(self):
-        return f"{self.id} - {self.event_name}"
+
     
 class AchievementPhoto(models.Model):
     photo = models.ImageField(upload_to='images')

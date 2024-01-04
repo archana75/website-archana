@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Student,Project , Post, Event, Cms, Achievement
+from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto
 from django.utils.timezone import datetime
 
 # Create your views here.
@@ -60,5 +60,9 @@ def future_events(request):
 
 def achievement(request):
     all_achievement = Achievement.objects.all()
-    data = dict(achievements = all_achievement)
+    all_photos = AchievementPhoto
+    data = dict(
+            achievements = all_achievement,
+            photos = all_photos,
+            )
     return render(request, "main/achievement.html", data)
