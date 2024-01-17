@@ -66,3 +66,13 @@ def achievement(request):
             photos = all_photos,
             )
     return render(request, "main/achievement.html", data)
+
+def achievement_detail(request, id):
+    current_achievement = Achievement.objects.get(id=id)
+    data = dict(
+        achievement_detail = current_achievement.event_name,
+        achievement_description = current_achievement.description,
+        achievement_project = current_achievement.project,
+        
+    )
+    return render(request, "main/achievement_detail.html", data)

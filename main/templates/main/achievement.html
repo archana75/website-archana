@@ -30,14 +30,14 @@
 <div class="container-fluid mt-5">
     <div class="row">
         {% for achievement in achievements %}
-        <div class="col-3 mb-2">
+        <div class="col-3 mb-2 d-flex align-items-stretch">
             <div class="card">
-                <img src="{{project.image.url}}" class="card-img-top" alt="...">
+                <img src="{{achievement.thumbnail.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{achievement.title}}</h5>
                   <div>{{ photos }}</div>
                   <p class="card-text">{{achievement.description|truncatewords:"15"}}</p>
-                  <a href="" class="btn btn-primary">Go somewhere</a>
+                  <a href="{% url 'achievement_detail' achievement.id %}" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
         </div>

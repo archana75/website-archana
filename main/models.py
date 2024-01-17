@@ -72,6 +72,7 @@ class Achievement(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.TextField()
     project = models.ManyToManyField(Project)
+    thumbnail = models.ImageField(help_text="Ukuran foto 500x500 pixel", upload_to='images', default=None, null=True)
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
