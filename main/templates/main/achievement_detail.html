@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+
+{% block title %}SMX{% endblock title%}
+
+{% block content %}
+
+{% load static %}
+
+
+<div class="container-fluid">
+  <div class="row">
+    {% include "main/navbar.html" %}
+  </div>
+</div>
+
+
+<div class="container-fluid">
+    <div class="row h-100 border border-primary" style="">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center">{{ achievement_detail }}</h1>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{project_image.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="text-center">
+                        <img class="img-fluid" src="{{project_logo.url}}" alt="">
+                    </div>
+                </div>
+            </div>
+
+                
+
+        </div>
+
+        <div class="col border border-danger">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center"> {{achievement_detail}} </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

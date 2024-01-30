@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Student,Project , Post, Event, Cms, Achievement
+from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto
 from django.utils.timezone import datetime
 
 # Create your views here.
@@ -14,7 +14,7 @@ def index(request):
     header_title = Cms.objects.get(name='header_title')
 
     today = datetime.today()
-    events = Event.objects.filter(date_start__gt = today)
+    events = Event.objects.filter(date_start__gte = today)
 
     return render(request, "main/index.html", {
                                 'projects' : top4_projects,
@@ -60,5 +60,19 @@ def future_events(request):
 
 def achievement(request):
     all_achievement = Achievement.objects.all()
-    data = dict(achievements = all_achievement)
+    all_photos = AchievementPhoto
+    data = dict(
+            achievements = all_achievement,
+            photos = all_photos,
+            )
     return render(request, "main/achievement.html", data)
+
+def achievement_detail(request, id):
+    current_achievement = Achievement.objects.get(id=id)
+    data = dict(
+        achievement_detail = current_achievement.event_name,
+        achievement_description = current_achievement.description,
+        achievement_project = current_achievement.project,
+        
+    )
+    return render(request, "main/achievement_detail.html", data)

@@ -26,7 +26,7 @@ class Student(models.Model):
         return f"{self.nisn} - {self.firstname} {self.lastname}"
     
 class Post(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     caption = models.TextField()
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -37,7 +37,7 @@ class Post(models.Model):
                 )
 
 class Event(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     description = models.TextField()
     date_start = models.DateField()
     date_end = models.DateField()
@@ -52,7 +52,7 @@ class Event(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     logo = models.ImageField(upload_to='images', blank=True)
     video_link = models.URLField(blank=True)
     attachment_link = models.URLField(blank=True)
@@ -63,23 +63,26 @@ class Project(models.Model):
                     Student,
                     on_delete=models.CASCADE,
                 )
+    
+    def __str__(self):
+        return f"{self.id} - {self.title}"
+    
 
 class Achievement(models.Model):
     event_name = models.CharField(max_length=100)
     description = models.TextField()
     project = models.ManyToManyField(Project)
+    thumbnail = models.ImageField(help_text="Ukuran foto 500x500 pixel", upload_to='images', default=None, null=True)
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
                     Student,
                     on_delete=models.CASCADE,
                 ) 
-    
-    def __str__(self):
-        return f"{self.id} - {self.event_name}"
+
     
 class AchievementPhoto(models.Model):
-    photo = models.ImageField(upload_to='images')
+    photo = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     achievement = models.ForeignKey(
                     Achievement,
                     on_delete=models.CASCADE
