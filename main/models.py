@@ -26,7 +26,7 @@ class Student(models.Model):
         return f"{self.nisn} - {self.firstname} {self.lastname}"
     
 class Post(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     caption = models.TextField()
     is_published = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -37,7 +37,7 @@ class Post(models.Model):
                 )
 
 class Event(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     description = models.TextField()
     date_start = models.DateField()
     date_end = models.DateField()
@@ -52,7 +52,7 @@ class Event(models.Model):
 class Project(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     logo = models.ImageField(upload_to='images', blank=True)
     video_link = models.URLField(blank=True)
     attachment_link = models.URLField(blank=True)
@@ -82,7 +82,7 @@ class Achievement(models.Model):
 
     
 class AchievementPhoto(models.Model):
-    photo = models.ImageField(upload_to='images')
+    photo = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     achievement = models.ForeignKey(
                     Achievement,
                     on_delete=models.CASCADE

@@ -14,7 +14,7 @@ def index(request):
     header_title = Cms.objects.get(name='header_title')
 
     today = datetime.today()
-    events = Event.objects.filter(date_start__gt = today)
+    events = Event.objects.filter(date_start__gte = today)
 
     return render(request, "main/index.html", {
                                 'projects' : top4_projects,
