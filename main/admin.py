@@ -9,6 +9,7 @@ from .models import (
     Achievement,
     AchievementPhoto,
     Cms,
+    Sliderimage,
     )
  
 # Register your models here.
@@ -113,6 +114,14 @@ class CmsAdmin(admin.ModelAdmin):
         'name',
         'content',
     )
+
+class SliderimageAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'image',
+        'created_at',
+        'created_by',
+    )
     
 admin.site.register(Post, PostAdmin)
 admin.site.register(Event, EventAdmin)
@@ -121,4 +130,5 @@ admin.site.register(Generation, GenerationAdmin)
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Achievement, AchievementAdmin)
 admin.site.register(Cms, CmsAdmin)
+admin.site.register(Sliderimage, SliderimageAdmin)
 # admin.site.register(AchievementPhoto, AchievementPhotoAdmin)
