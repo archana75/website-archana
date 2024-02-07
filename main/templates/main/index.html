@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-<!--project-->
+<!--                                                                                  project                                                                        -->
 <div class="container-fluid">
   <div class="row" 
     style="background-image: url('{{ bg_header2.content }}');
@@ -76,7 +76,7 @@
         {% for project in projects %}
 
             <div class="col-6 p-2 rounded-3">
-
+              <a href="{% url 'project_detail' project.id %}">
                <div class="card bg-white bg-opacity-75">
                   <div class="card-body">
                      <div class="card-body">
@@ -98,7 +98,7 @@
                     
                </div>
 
-              
+              </a>
             </div>
             
         {% endfor %}
@@ -148,7 +148,7 @@
    </div>
 
 </div>
-
+<!--                                                                                                                     -->
 <div class="container-fluid">
 
     <div class="row" 
@@ -166,28 +166,28 @@
 
             <div class="row">
 
-                <div class="col-5 mx-auto">
+                <div class="col-5 mx-auto overflow-auto" style="height: 500px;">
 
                     {% for event in events %}
  
                         {% if forloop.counter|divisibleby:2 %}
                     
-                            <div class="row">
+                            <div class="row" style="height: 10rem;">
                                 <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
                                             background-repeat: no-repeat;
                                             background-position: center;
                                             background-size: cover;">
                                 </div>
-                                <div class="col-6 mb-2 bg-white">
-                                    <p>{{ event.description|truncatewords:"10" }}</p>
+                                <div class="col-6 mb-2 bg-white text-center border border-danger">
+                                    <p class="my-auto border border-dark">{{ event.description|truncatewords:"10" }}</p>
                                 </div>
                             </div>
                     
                         {% else %}
                     
-                            <div class="row">
-                                <div class="col-6 mb-2 bg-white">
-                                    <p>{{ event.description|truncatewords:"10" }}</p>
+                            <div class="row" style="height: 10rem;">
+                                <div class="col-6 mb-2 bg-white text-center border border-danger">
+                                    <p class="my-auto">{{ event.description|truncatewords:"10" }}</p>
                                 </div>
                                 <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
                                             background-repeat: no-repeat;
