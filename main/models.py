@@ -105,3 +105,11 @@ class Cms(models.Model):
     
     class Meta:
          verbose_name = "CMS"
+
+class Sliderimage(models.Model):
+    image = models.ImageField(upload_to='images', help_text= "maks size 16:9")
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+                    User,
+                    on_delete=models.CASCADE
+                )

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto
+from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto, Sliderimage
 from django.utils.timezone import datetime
 
 # Create your views here.
@@ -12,6 +12,7 @@ def index(request):
     bg_header3 = Cms.objects.get(name='bg_header3')
     bg_header4 = Cms.objects.get(name='bg_header4')
     header_title = Cms.objects.get(name='header_title')
+    sliderimages = Sliderimage.objects.all()
 
     today = datetime.today()
     events = Event.objects.filter(date_start__gte = today)
@@ -25,6 +26,7 @@ def index(request):
                                 'bg_header3': bg_header3,
                                 'bg_header4': bg_header4,
                                 'header_title' : header_title,
+                                'sliderimages' : sliderimages,
                             })
 
 
