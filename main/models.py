@@ -37,12 +37,13 @@ class Post(models.Model):
                 )
 
 class Event(models.Model):
+    title = models.CharField(max_length=200, null=True, blank=True)
     image = models.ImageField(upload_to='images', help_text= "maks size 4mb")
     description = models.TextField()
     date_start = models.DateField()
     date_end = models.DateField()
     is_published = models.BooleanField(default=True)
-    attachment_link = models.URLField(max_length=200)
+    attachment_link = models.URLField(max_length=200, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(
                     User,

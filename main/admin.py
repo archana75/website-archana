@@ -28,6 +28,7 @@ class PostAdmin(admin.ModelAdmin):
 class EventAdmin(admin.ModelAdmin):
     list_display = (
         "id",
+        "title",
         "image",
         "description",
         "date_start",
