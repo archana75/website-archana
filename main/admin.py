@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from pytube import extract
 from .models import (
     Post,
     Event,
@@ -27,11 +28,19 @@ class PostAdmin(admin.ModelAdmin):
      exclude = ['created_by']
  
 class EventAdmin(admin.ModelAdmin):
+
+        
+    def get_description(self, obj):
+        return obj.description[:100]+"..."
+    
+    get_description.short_description = "description"
+
+
     list_display = (
         "id",
         "title",
         "image",
-        "description",
+        "get_description",
         "date_start",
         "date_end",
         "is_published",
@@ -44,14 +53,28 @@ class ProjectAdmin(admin.ModelAdmin):
 
     def image(self):
         return format_html (f"<img src='{self.image.url}' width=100>")
-        
+    
+    def get_description(self, obj):
+        return obj.description[:100]+"..."
+    
+    def logo(self):
+        return format_html (f"<img src='{self.logo.url}' width=100>")
+    
+    def yt_thumbnail(self):
+        if self.video_link: 
+            video_id=extract.video_id(self.video_link)
+            return format_html (f"<img src='https://img.youtube.com/vi/{video_id}/0.jpg' width=100>")
+
+    yt_thumbnail.short_description = "youtube video"
+    get_description.short_description = "description"
+
     list_display = (
         'id',
         'title',
-        'description',
+        'get_description',
         image,
-        'logo',
-        'video_link',
+        logo,
+        yt_thumbnail,
         'attachment_link',
         'is_published',
         'school_product',

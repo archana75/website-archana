@@ -32,11 +32,14 @@
     <div class="row">
         {% for project in projects %}
         <div class="col-3 mb-2">
-            <div class="card">
+            <div class="card" style="width: 29rem;">
                 <img src="{{project.image.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
                   <h5 class="card-title">{{project.title}}</h5>
-                  <p class="card-text">{{project.description|truncatewords:"15"}}</p>
+                  <p class="card-text">{{project.description|truncatewords:"15"}}
+                    <a style="text-decoration: none;" href="{% url 'project_detail' project.id %}">. . .</a>
+                  </p>
+                  
                   <a href="{% url 'project_detail' project.id %}" class="btn btn-primary">Go somewhere</a>
                 </div>
               </div>
