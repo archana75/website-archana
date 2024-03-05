@@ -7,12 +7,13 @@ from django.utils.timezone import datetime
 def index(request):
     top4_projects = Project.objects.all()[0:4]
     top8_projects = Project.objects.all().filter(school_product = True)[0:8]
-    bg_header = Cms.objects.get(name='bg_header')
-    bg_header2 = Cms.objects.get(name='bg_header2')
-    bg_header3 = Cms.objects.get(name='bg_header3')
+    background_depan_judul = Cms.objects.get(name='bg_utama')
+    background_student_project = Cms.objects.get(name='bg_project')
+    bg_products = Cms.objects.get(name='bg_products')
     bg_header4 = Cms.objects.get(name='bg_header4')
     header_title = Cms.objects.get(name='header_title')
     sliderimages = Sliderimage.objects.all()
+    
 
     today = datetime.today()
     events = Event.objects.filter(date_start__gte = today)
@@ -21,9 +22,9 @@ def index(request):
                                 'projects' : top4_projects,
                                 'products' : top8_projects,
                                 'events'   : events,
-                                'bg_header': bg_header,
-                                'bg_header2': bg_header2,
-                                'bg_header3': bg_header3,
+                                'bg_depan_judul': background_depan_judul,
+                                'bg_depan_project': background_student_project,
+                                'bg_products': bg_products,
                                 'bg_header4': bg_header4,
                                 'header_title' : header_title,
                                 'sliderimages' : sliderimages,
@@ -52,7 +53,8 @@ def project_detail(request, id):
     
 def products(request):
     all_products = Project.objects.filter(school_product = 1)
-    data = dict(products = all_products)
+    backdrop = Cms.objects.get(name='background_judul')
+    data = dict(products = all_products, background_judul = backdrop)
     return render(request, "main/products.html", data)
 
 def future_events(request):
@@ -72,9 +74,7 @@ def achievement(request):
 def achievement_detail(request, id):
     current_achievement = Achievement.objects.get(id=id)
     data = dict(
-        achievement_detail = current_achievement.event_name,
-        achievement_description = current_achievement.description,
-        achievement_project = current_achievement.project,
-        
+        achievement = current_achievement,
+
     )
     return render(request, "main/achievement_detail.html", data)

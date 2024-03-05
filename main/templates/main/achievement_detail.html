@@ -8,48 +8,42 @@
 
 
 <div class="container-fluid">
-  <div class="row">
-    {% include "main/navbar.html" %}
-  </div>
-</div>
-
-
-<div class="container-fluid">
-    <div class="row h-100 border border-primary" style="">
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center">{{ achievement_detail }}</h1>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="text-center">
-                        <img class="img-fluid" src="{{project_image.url}}" alt="">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="text-center">
-                        <img class="img-fluid" src="{{project_logo.url}}" alt="">
-                    </div>
-                </div>
-            </div>
-
-                
-
-        </div>
-
-        <div class="col border border-danger">
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center"> {{achievement_detail}} </h1>
-                </div>
-            </div>
-        </div>
+    <div class="row">
+      {% include "main/navbar.html" %}
     </div>
 </div>
+      
+<div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12 my-5 p-3 border shadow">
+          <div class="row">
+              <div class="col">
+                  <p class="text-center display-4">{{ achievement.event_name }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <p class="text-center display-6">{{achievement.description}}</p>         
+              </div>
+              <div class="col-6">
+                  <img class="img-fluid" alt="" src="{{achievement.thumbnail.url}}">
+              </div>
+          </div>
+          <div class="row">
+              <div class="col d-flex justify-content-between mt-3">
+                  <h4>{{achievement.created_at|date:'j m, Y'}}</h4>
+                  
+                  {% if event.attachment_link %}
+                      <a href="{{event.attachment_link}}" class="btn btn-primary">__click disini untuk mendaftarkan__</a>
+                  {% endif %}
+                      
+                 
+              </div>
+          </div>
+        </div>
+        
+    </div>
+</div>
+
+
 {% endblock content %}

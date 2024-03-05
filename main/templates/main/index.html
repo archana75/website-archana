@@ -11,7 +11,7 @@
    {% include "main/navbar.html" %}
   <!--logo smx-->
   <div class="row" 
-    style="background-image: url('{{ bg_header.content }}');
+    style="background-image: url('{{ bg_depan_judul.content }}');
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -64,20 +64,10 @@
 
 </div>
 
-<div class="container-fluid">
-  <div class="row vh-100">
-    <div class="col my-auto">
-      <h1 class="text-center center-dark">Come visit us at the school of makers</h1>
-    </div>
-    <div class="col my-auto">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5677318576836!2d106.82170957465866!3d-6.576108893417323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c7b53f042fe3%3A0xedd50d0ef554596d!2sSMX%20School%20of%20Maker!5e0!3m2!1sid!2sid!4v1694522819329!5m2!1sid!2sid" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </div>
-</div>
 <!--                                                                                  project                                                                        -->
 <div class="container-fluid">
   <div class="row" 
-    style="background-image: url('{{ bg_header2.content }}');
+    style="background-image: url('{{ bg_depan_project.content }}');
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -135,7 +125,7 @@
 <div class="container-fluid">
 
    <div class="row" 
-   style="background-image: url('{{ bg_header3.content }}');
+   style="background-image: url('{{ bg_products.content }}');
            background-repeat: no-repeat;
            background-position: center;
            background-size: cover;
@@ -157,7 +147,7 @@
 
             <div class="row">
               <div class="col text-center">
-                <a href="" class="btn btn-primary">see more . . .</a>
+                <a href="{% url 'products' %}" class="btn btn-primary">see more . . .</a>
               </div>
             </div>
 
@@ -227,6 +217,17 @@
             </div>
             
         </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row vh-100">
+    <div class="col my-auto">
+      <h1 class="text-center center-dark">Come visit us at the school of makers</h1>
+    </div>
+    <div class="col my-auto">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5677318576836!2d106.82170957465866!3d-6.576108893417323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c7b53f042fe3%3A0xedd50d0ef554596d!2sSMX%20School%20of%20Maker!5e0!3m2!1sid!2sid!4v1694522819329!5m2!1sid!2sid" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
 </div>
 {% endblock content %}
 

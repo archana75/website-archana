@@ -14,7 +14,7 @@
         </div>
       
       </div>
-      <div class="container-fluid">
+      <div class="container-fluid mt-5">
     <div class="row"
     style="background-image: url('https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&q=80&w=1000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cmFuZG9tfGVufDB8fDB8fHww');
             background-repeat: no-repeat;
@@ -34,7 +34,7 @@
             <div class="card" style="width: 29rem; height: 29rem;">
                 <img src="{{achievement.thumbnail.url}}" class="card-img-top" alt="...">
                 <div class="card-body">
-                  <h5 class="card-title">{{achievement.title}}</h5>
+                  <h5 class="card-title text-center">{{achievement.event_name}}</h5>
                   <p class="card-text">{{achievement.description|truncatewords:"15"}}</p>
                   <a href="{% url 'achievement_detail' achievement.id %}" class="btn btn-primary">Go somewhere</a>
                 </div>
