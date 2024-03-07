@@ -11,6 +11,8 @@ from .models import (
     AchievementPhoto,
     Cms,
     Sliderimage,
+    Program,
+    ProgramPhoto,
     )
  
 # Register your models here.
@@ -145,6 +147,32 @@ class SliderimageAdmin(admin.ModelAdmin):
         'created_at',
         'created_by',
     )
+
+class ProgramPhotoAdmin(admin.TabularInline):
+
+    model = ProgramPhoto
+
+    def project_by(self, obj):
+        return "obj.created_by"
+    
+    list_display = (
+        'id',
+        'photo',
+        'created_at',
+        # 'created_by'
+    )
+
+class ProgramAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'description',
+        'created_at',
+        'created_by',
+        
+    )
+    inlines = [ProgramPhotoAdmin,]
+
     
 admin.site.register(Post, PostAdmin)
 admin.site.register(Event, EventAdmin)
@@ -154,4 +182,5 @@ admin.site.register(Student, StudentAdmin)
 admin.site.register(Achievement, AchievementAdmin)
 admin.site.register(Cms, CmsAdmin)
 admin.site.register(Sliderimage, SliderimageAdmin)
+admin.site.register(Program, ProgramAdmin)
 # admin.site.register(AchievementPhoto, AchievementPhotoAdmin)

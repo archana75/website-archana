@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto, Sliderimage
+from .models import Student,Project , Post, Event, Cms, Achievement, AchievementPhoto, Sliderimage,Program,ProgramPhoto
 from django.utils.timezone import datetime
 
 # Create your views here.
@@ -78,3 +78,26 @@ def achievement_detail(request, id):
 
     )
     return render(request, "main/achievement_detail.html", data)
+
+def program(request):
+    all_program = Program.objects.all()
+    backdrop = Cms.objects.get(name='background_judul')
+    data = dict(
+        programs = all_program,
+        background_judul = backdrop
+    )
+
+    return render(request, "main/program.html", data)
+
+def program_detail(request, id):
+    current_program = Program.objects.get(id=id)
+    program_photos = ProgramPhoto.objects.filter(program_id = id)
+    backdrop = Cms.objects.get(name='background_judul')
+    data = dict(
+        program = current_program,
+        photos = program_photos,
+        background_judul = backdrop
+    )
+
+    return render(request, "main/program_detail.html", data)
+

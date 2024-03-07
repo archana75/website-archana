@@ -113,3 +113,25 @@ class Sliderimage(models.Model):
                     User,
                     on_delete=models.CASCADE
                 )
+    
+class Program(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    thumbnail = models.ImageField(upload_to='images', help_text= "maks size 16:9", null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+                    User,
+                    on_delete=models.CASCADE
+                )
+    
+class ProgramPhoto(models.Model):
+    photo = models.ImageField(upload_to='images', help_text= "maks size 4mb")
+    program = models.ForeignKey(
+                    Program,
+                    on_delete=models.CASCADE
+                )
+    created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+                    Student,
+                    on_delete=models.CASCADE
+                )

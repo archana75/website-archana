@@ -9,5 +9,6 @@ urlpatterns = [
     path('future_events/', views.future_events, name="future_events"),
     path('achievement/', views.achievement, name="achievement"),
     path('achievement/<int:id>', views.achievement_detail, name="achievement_detail"),
-    
-]
+    path('program/', views.program, name= "program"),
+    path('program/<int:id>', views.program_detail, name="program_detail"),
+] 

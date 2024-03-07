@@ -1,0 +1,75 @@
+{% extends 'main/base.html' %}
+
+{% block title %}SMX{% endblock title%}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container-fluid">
+    <div class="container-fluid">
+        <!--logo smx-->
+        <div class="row">
+            {% include "main/navbar.html" %}
+        </div>
+
+    </div>
+    <div class="container-fluid mt-5">
+        <div class="row"
+        style="background-image: url('{{ background_judul.content }}');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: 15vh;">
+            <div class="col d-flex">
+                <h1 class="text-center my-auto mx-auto">Program photos</h1>
+            </div>
+        </div>
+    </div>
+
+            <div class="row">
+
+                <div class="col-12 text-center">
+
+                    {% for photo in photos %}
+ 
+                        {% if forloop.counter|divisibleby:2 %}
+                    
+                            <div class="row" style="height: 30rem;">
+                                <div class="col-6 mb-2" style="background-image: url('{{ photo.photo.url }}');
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            background-size: cover;">
+                                </div>
+                                <div class="col-6 mb-2 bg-white text-center">
+                                    <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
+                                </div>
+                            </div>
+                    
+                        {% else %}
+                    
+                            <div class="row" style="height: 30rem;">
+                                <div class="col-6 mb-2 bg-white text-center">
+                                    <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
+                                </div>
+                                <div class="col-6 mb-2" style="background-image: url('{{ photo.photo.url }}');
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            background-size: cover;">
+                                </div>                                
+                            </div>    
+                    
+                        {% endif %}
+                    
+                    {% endfor %}
+                    
+                </div>
+
+                
+
+            </div>
+            
+        </div>
+</div>
+
+{% endblock content %}
