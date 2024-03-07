@@ -126,6 +126,7 @@ class Program(models.Model):
     
 class ProgramPhoto(models.Model):
     photo = models.ImageField(upload_to='images', help_text= "maks size 4mb")
+    description = models.TextField(null=True, blank=True)
     program = models.ForeignKey(
                     Program,
                     on_delete=models.CASCADE
