@@ -72,7 +72,6 @@
             background-position: center;
             background-size: cover;
             height: 100vh;">
-
     <div class="col my-auto">
         <h1 class="text-center text-white display-1">Student Projects</h1>
         <div class="col-8 p-2 bg-white bg-opacity-50 rounded-3 m-auto">
@@ -80,11 +79,8 @@
         </div>
     </div>
     <div class="col my-auto">
-
       <div class="row">
-
         {% for project in projects %}
-
             <div class="col-6 p-2 rounded-3">
               <a href="{% url 'project_detail' project.id %}">
                <div class="card bg-white bg-opacity-75">
@@ -102,17 +98,12 @@
                   <div class="text-center">
                      
                     </div>
-      
-                    
-
-                    
                </div>
-
               </a>
             </div>
             
         {% endfor %}
-         
+
         <div class="text-center">
             <a class="btn btn-sm btn-primary" href="{% url 'project_page' %}">see more . . .</a>
         </div>
@@ -120,105 +111,97 @@
       
       </div>
     </div>
+  </div>
 </div>
 <!--products-->
 <div class="container-fluid">
-
-   <div class="row" 
-   style="background-image: url('{{ bg_products.content }}');
-           background-repeat: no-repeat;
-           background-position: center;
-           background-size: cover;
-           height: 100vh;">
-   
-      <div class="col-8 m-auto">
-
-         <h1 class="text-center text-white display-1">our products</h1>
-
-         <div class="row">
-            
-            {% for product in products %}
-
-               <div class="col-3 mb-2">
-                  <img class="img-fluid rounded-5 border border-dark" src="{{ product.image.url }}" alt="">
-               </div>
-
-            {% endfor %}
-
-            <div class="row">
-              <div class="col text-center">
-                <a href="{% url 'products' %}" class="btn btn-primary">see more . . .</a>
+  <div class="row" 
+          style="background-image: url('{{ bg_products.content }}');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          height: 100vh;">
+    <div class="col-8 m-auto">
+        <h1 class="text-center text-white display-1">Program</h1>
+        <div class="row">
+          {% for product in products %}
+              <div class="col-3 mb-2">
+                <img class="img-fluid rounded-5 border border-dark" src="{{ product.image.url }}" alt="">
               </div>
+          {% endfor %}
+          <div class="row">
+            <div class="col text-center">
+              <a href="{% url 'products' %}" class="btn btn-primary">see more . . .</a>
             </div>
-
-         </div>
-
-      </div>
-
-   </div>
-
+          </div>
+        </div>
+    </div>
+  </div>
 </div>
-<!--                                                                                                                     -->
+<!--                                  future events                                                                   -->
 <div class="container-fluid">
 
-    <div class="row" 
-    style="background-image: url('{{ bg_header4.content }}');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            height: 100vh;">
+  <div class="row" 
+          style="background-image: url('{{ bg_header4.content }}');
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: cover;
+          height: 100vh;">
 
-        <div class="col-8 m-auto">
+      <div class="col-8 m-auto">
 
-            <div class="row">
-                <h1 class="text-center text-white display-1">Future Events</h1>
-            </div>
+          <div class="row">
+              <h1 class="text-center text-white display-1">Future Events</h1>
+          </div>
 
-            <div class="row">
+          <div class="row">
 
-                <div class="col-10 mx-auto overflow-auto" style="height: 500px;">
+              <div class="col-10 mx-auto overflow-auto" style="height: 500px;">
 
-                    {% for event in events %}
- 
-                        {% if forloop.counter|divisibleby:2 %}
-                    
-                            <div class="row" style="height: 20rem;">
-                                <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            background-size: cover;">
-                                </div>
-                                <div class="col-6 mb-2 bg-white text-center">
-                                    <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
-                                </div>
-                            </div>
-                    
-                        {% else %}
-                    
-                            <div class="row" style="height: 20rem;">
-                                <div class="col-6 mb-2 bg-white text-center">
-                                    <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
-                                </div>
-                                <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
-                                            background-repeat: no-repeat;
-                                            background-position: center;
-                                            background-size: cover;">
-                                </div>                                
-                            </div>    
-                    
-                        {% endif %}
-                    
-                    {% endfor %}
-                    
-                </div>
+                  {% for event in events %}
 
-                
+                      {% if forloop.counter|divisibleby:2 %}
+                  
+                          <div class="row" style="height: 20rem;">
+                              <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
+                                          background-repeat: no-repeat;
+                                          background-position: center;
+                                          background-size: cover;">
+                              </div>
+                              <div class="col-6 mb-2 bg-white text-center">
+                                  <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
+                              </div>
+                          </div>
+                  
+                      {% else %}
+                  
+                          <div class="row" style="height: 20rem;">
+                              <div class="col-6 mb-2 bg-white text-center">
+                                  <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
+                              </div>
+                              <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
+                                          background-repeat: no-repeat;
+                                          background-position: center;
+                                          background-size: cover;">
+                              </div>                                
+                          </div>    
+                  
+                      {% endif %}
+                  
+                  {% endfor %}
+                  
+              </div>
 
-            </div>
-            
-        </div>
+              
+
+          </div>
+          
+      </div>
+  </div>
+
 </div>
 
+<!-- footer -->
 <div class="container-fluid" style="background-color: #1C0F04;">
   <div class="row">
     <div class="col my-auto">
