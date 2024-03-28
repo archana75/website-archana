@@ -7,216 +7,128 @@
 {% load static %}
 
 <!--pembuka -->
-<div class="container-fluid">
+
    {% include "main/navbar.html" %}
   <!--logo smx-->
-  <div class="row" 
-    style="background-image: url('{{ bg_depan_judul.content }}');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            height: 100vh;">
-  
+   
+  <div class="container-fluid mb-3"
+  style="background-image: url('{{bg_depan_judul.content}}');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100vh;">
 
-
-    <div class="position-relative">
-      <div class="position-absolute top-50 start-50 translate-middle text-center">
-
-        <img src='{% static "main/img/logo_smx.png" %}' alt="logo smx" class="col-12 col-md-8 col-lg-6">
-        
-        <h1 class="text-light display-2">
-          
-          {% if header_title.content %}
-
-            {{ header_title.content }}
-
-          {% else %}
-
-            Join us to see more amazing projects
-
-          {% endif %}
-          
-        </h1>
-
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner rounded-5">
-            
-            {% for sliderimage in sliderimages  %}
-            <div class="carousel-item active">
-              <img src="{{sliderimage.image.url}}" class="d-block w-100" alt="...">
-            </div>
-            {% endfor %}
-
+  <div class="container ">
+      <div class="row vh-100">
+          <div class="col-12 col-md-5 my-auto  bg-white bg-opacity-50 py-3 pe-3 rounded-3">
+              <!-- <div class="position-absolute top-50 start-0 translate-middle-y"> -->
+                  <h1 class="display-4">Selamat Datang</h1>
+                  <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus laborum, repellat?</p>    
+              <!-- </div> -->
+              <!-- <button class="btn btn-primary">Tombol 1</button> -->
+              <!-- <button class="btn btn-secondary">Tombol 2</button> -->
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-          </button>
-        </div>
-        
       </div>
-    </div>
-  </div>
-
-</div>
-
-<!--                                                                                  project                                                                        -->
-<div class="container-fluid">
-  <div class="row" 
-    style="background-image: url('{{ bg_depan_project.content }}');
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            height: 100vh;">
-    <div class="col my-auto">
-        <h1 class="text-center text-white display-1">Student Projects</h1>
-        <div class="col-8 p-2 bg-white bg-opacity-50 rounded-3 m-auto">
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-        </div>
-    </div>
-    <div class="col my-auto">
-      <div class="row">
-        {% for project in projects %}
-            <div class="col-6 p-2 rounded-3">
-              <a href="{% url 'project_detail' project.id %}">
-               <div class="card bg-white bg-opacity-75">
-                  <div class="card-body">
-                     <div class="card-body">
-                        <img class="" height="100" src="{{project.image.url}}" alt="">
-                     </div>
-                     <div class="card-title">
-                        <h3 class="text-center">{{project.title}}</h3>
-                     </div>
-                     <div class="card-text">
-                        <p class="">{{project.description|truncatewords:"10"}}</p>
-                     </div>
-                  </div>
-                  <div class="text-center">
-                     
-                    </div>
-               </div>
-              </a>
-            </div>
-            
-        {% endfor %}
-
-        <div class="text-center">
-            <a class="btn btn-sm btn-primary" href="{% url 'project_page' %}">see more . . .</a>
-        </div>
-        
       
-      </div>
+  </div>
+
+  <div class="container" id="project">
+    <div class="row h-100">
+        <h1 class="display-1 mb-3 text-center">Projects</h1>
+        {% for project in projects %}
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="position-relative mb-3">
+                        <img src="{{project.image.url}}" alt="" class="card-img-top">
+                        <div class="position-absolute bottom-0 end-0">
+                            <button class="btn btn-primary m-2">Detail</button>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="card-title mb-3">{{ project.title }}</div>
+                    <div class="card-text">
+                        <p>{{ project.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>          
+        {% endfor %} 
     </div>
   </div>
-</div>
-<!--products-->
-<div class="container-fluid">
-  <div class="row" 
-          style="background-image: url('{{ bg_products.content }}');
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          height: 100vh;">
-    <div class="col-8 m-auto">
-        <h1 class="text-center text-white display-1">Program</h1>
-        <div class="row">
-          {% for product in products %}
-              <div class="col-3 mb-2">
-                <img class="img-fluid rounded-5 border border-dark" src="{{ product.image.url }}" alt="">
+
+  
+  <div class="container" id="program">
+    <div class="row h-100">
+        <h1 class="display-1 mb-3 text-center">Program</h1>
+        {% for program in programs %}  
+        <div class="col-12 col-md-6 col-lg-4 mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="position-relative mb-3">
+                        <img src="{{ program.thumbnail.url }}" alt="" class="card-img-top">
+                        <div class="position-absolute bottom-0 end-0">
+                            <button class="btn btn-primary m-2">Detail</button>
+                        </div>
+                    </div>
+                    <div></div>
+                    <div class="card-title mb-3">{{ program.title }}</div>
+                    <div class="card-text">
+                        <p>{{ program.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+
+    <div class="container" id="event">
+      <div class="row h-100">
+          <h1 class="display-1 mb-3 text-center">Events</h1>
+          <div class="col-12 col-md-6 mb-3">
+              <div class="card">
+                  <div class="card-body">
+                      <div class="position-relative mb-3">
+                          <img src="{{ upcoming_events.image.url}}" alt="" class="card-img-top">
+                          <div class="position-absolute bottom-0 end-0">
+                              <button class="btn btn-primary m-2">Detail</button>
+                          </div>
+                      </div>
+                      <div></div>
+                      <div class="card-title mb-3">{{ upcoming_events.title }}</div>
+                      <div class="card-text">
+                          <p>{{ upcoming_events.description }}</p>
+                      </div>
+                  </div>
               </div>
-          {% endfor %}
-          <div class="row">
-            <div class="col text-center">
-              <a href="{% url 'products' %}" class="btn btn-primary">see more . . .</a>
+          </div>
+          <div class="col-12 col-md-6">
+                
+            <div class="row">
+              {% for event in events %}
+                <div class="col-12 col-lg-6 mb-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="position-relative mb-3">
+                                <img src="{{ event.image.url }}" alt="" class="card-img-top">
+                                <div class="position-absolute bottom-0 end-0">
+                                    <button class="btn btn-primary m-2">Detail</button>
+                                </div>
+                            </div>
+                            <div></div>
+                            <div class="card-title mb-3">{{ event.title }}</div>
+                            <div class="card-text">
+                                <p>{{ event.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              {% endfor %}
             </div>
           </div>
-        </div>
-    </div>
-  </div>
-</div>
-<!--                                  future events                                                                   -->
-<div class="container-fluid">
-
-  <div class="row" 
-          style="background-image: url('{{ bg_header4.content }}');
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          height: 100vh;">
-
-      <div class="col-8 m-auto">
-
-          <div class="row">
-              <h1 class="text-center text-white display-1">Future Events</h1>
-          </div>
-
-          <div class="row">
-
-              <div class="col-10 mx-auto overflow-auto" style="height: 500px;">
-
-                  {% for event in events %}
-
-                      {% if forloop.counter|divisibleby:2 %}
-                  
-                          <div class="row" style="height: 20rem;">
-                              <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
-                                          background-repeat: no-repeat;
-                                          background-position: center;
-                                          background-size: cover;">
-                              </div>
-                              <div class="col-6 mb-2 bg-white text-center">
-                                  <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
-                              </div>
-                          </div>
-                  
-                      {% else %}
-                  
-                          <div class="row" style="height: 20rem;">
-                              <div class="col-6 mb-2 bg-white text-center">
-                                  <p class="my-auto mb-3 mt-4">{{ event.description|truncatewords:"10" }}</p>
-                              </div>
-                              <div class="col-6 mb-2" style="background-image: url('{{ event.image.url }}');
-                                          background-repeat: no-repeat;
-                                          background-position: center;
-                                          background-size: cover;">
-                              </div>                                
-                          </div>    
-                  
-                      {% endif %}
-                  
-                  {% endfor %}
-                  
-              </div>
-
-              
-
-          </div>
-          
       </div>
-  </div>
+    </div> 
 
-</div>
-
-<!-- footer -->
-<div class="container-fluid" style="background-color: #1C0F04;">
-  <div class="row">
-    <div class="col my-auto">
-      <iframe class="rounded-4 border mb-3 mt-3" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.5677318576836!2d106.82170957465866!3d-6.576108893417323!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c7b53f042fe3%3A0xedd50d0ef554596d!2sSMX%20School%20of%20Maker!5e0!3m2!1sid!2sid!4v1694522819329!5m2!1sid!2sid" width="600" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-    <div class="col my-auto">
-      <h1 class="text-center text-light">About us</h1>
-      <p style="font-family: 'Times New Roman', Times, serif" class="text-center fs-5 text-light">
-        ini adalah project sekolah buatan <b>azmi</b> fikri arkana rizki salah menjadikan website ini sebagai project buatannya
-      </p>
-    </div>
-    <div class="col my-auto text-center">
-      <img src='{% static "main/img/archana_logo.png" %}' alt="logo archana" class="m-auto img-fluid" width="300">
-    </div>
-  </div>
-</div>
 {% endblock content %}
 

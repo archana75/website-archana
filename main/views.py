@@ -6,7 +6,7 @@ from django.utils.timezone import datetime
 # Create your views here.
 def index(request):
     top4_projects = Project.objects.all()[0:4]
-    top8_projects = Project.objects.all().filter(school_product = True)[0:8]
+    top8_projects = Program.objects.all()[0:8]
     background_depan_judul = Cms.objects.get(name='bg_utama')
     background_student_project = Cms.objects.get(name='bg_project')
     bg_products = Cms.objects.get(name='bg_products')
@@ -16,12 +16,14 @@ def index(request):
     
 
     today = datetime.today()
-    events = Event.objects.filter(date_start__gte = today)
+    upcoming_events = Event.objects.filter(date_start__gte = today)[0]
+    events = Event.objects.filter(date_start__gte = today)[1:4]
 
     return render(request, "main/index.html", {
                                 'projects' : top4_projects,
-                                'products' : top8_projects,
+                                'programs' : top8_projects,
                                 'events'   : events,
+                                'upcoming_events' : upcoming_events,
                                 'bg_depan_judul': background_depan_judul,
                                 'bg_depan_project': background_student_project,
                                 'bg_products': bg_products,
